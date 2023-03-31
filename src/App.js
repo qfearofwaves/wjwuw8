@@ -1,30 +1,33 @@
 import React, {Fragment} from 'react';
 
+function Square({ value }) {
+  return <button className='square'>{value}</button>
+}
 // this creates a component
 // in React, a component is a piece of code that represents 
 // a resuable part of a user interface
 // `export` makes this function available outside of this file
 // The `default` keyword tells other files using your code that it’s the main function in your file.
-export default function Square() {
+export default function Board() {
   // <button> is a JSX element
   return (
     // https://stackoverflow.com/questions/48316365/react-fragment-shorthand-failing-to-compile
     // <></> the shorthand won't work
     <Fragment>
       <div className="board-row">
-        <button className="square">1</button>
-        <button className="square">2</button>
-        <button className="square">3</button>
+        <Square value="1"/>
+        <Square value="2"/>
+        <Square value="3"/>
       </div>
       <div className="board-row">
-        <button className="square">4</button>
-        <button className="square">5</button>
-        <button className="square">6</button>
+        <Square value="4"/>
+        <Square value="5"/>
+        <Square value="6"/>
       </div>
       <div className="board-row">
-        <button className="square">7</button>
-        <button className="square">8</button>
-        <button className="square">9</button>
+        <Square value="7"/>
+        <Square value="8"/>
+        <Square value="9"/>
       </div>
     </Fragment>
   );
