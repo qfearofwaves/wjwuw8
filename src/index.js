@@ -1,4 +1,5 @@
 import React, { StrictMode } from "react";
+// react's library to talk to web browsers (react dom)
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
