@@ -1,7 +1,15 @@
 import React, {Fragment} from 'react';
 
 function Square({ value }) {
-  return <button className='square'>{value}</button>
+  function handleClick() {
+    console.log('clicked!');
+  }
+  return (
+    <button className="square"  onClick={handleClick}>
+      {value}
+    </button>
+  );
+
 }
 // this creates a component
 // in React, a component is a piece of code that represents 
@@ -15,7 +23,7 @@ export default function Board() {
     // <></> the shorthand won't work
     <Fragment>
       <div className="board-row">
-        <Square value="1"/>
+        <Square value=" "/>
         <Square value="2"/>
         <Square value="3"/>
       </div>
