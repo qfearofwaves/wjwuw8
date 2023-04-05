@@ -1,9 +1,13 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 
-function Square({ value }) {
+function Square() {
+  // value stores the value and setValue is a function that can be used to change the value. 
+  const [value, setValue] = useState(null);
+
   function handleClick() {
-    console.log('clicked!');
+    setValue('X');
   }
+
   return (
     <button className="square"  onClick={handleClick}>
       {value}
@@ -23,19 +27,19 @@ export default function Board() {
     // <></> the shorthand won't work
     <Fragment>
       <div className="board-row">
-        <Square value=" "/>
-        <Square value="2"/>
-        <Square value="3"/>
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <Square value="4"/>
-        <Square value="5"/>
-        <Square value="6"/>
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <Square value="7"/>
-        <Square value="8"/>
-        <Square value="9"/>
+        <Square />
+        <Square />
+        <Square />
       </div>
     </Fragment>
   );
