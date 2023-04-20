@@ -12,17 +12,15 @@ function Square({ value, onSquareClik }) {
 // a resuable part of a user interface
 // `export` makes this function available outside of this file
 // The `default` keyword tells other files using your code that it’s the main function in your file.
-export default function Board() {
+function Board({ xIsNext, squares, onPlay }) {
   // <button> is a JSX element
-  const [xIsNext, setXIsNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
   const winner = calculateWinner(squares);
   let status;
 
   if (winner) {
     status = "Winner: " + winner;
   } else {
-    status = "Next player: " + (xIsNext ? "x" : "O");
+    status = "Next player: " + (xIsNext ? "X" : "O");
   }
 
 
@@ -36,8 +34,7 @@ export default function Board() {
     } else {
       nextSquares[i] = "O";
     }
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
+    onPlay(nextSquares);
   }
 
   return (
@@ -63,6 +60,30 @@ export default function Board() {
       </div>
     </Fragment>
   );
+}
+
+// we use the Game component as the top level component 
+export default function Game() {
+  const [xIsNext, setXIsNext] = useState(true);
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const currentSquares = history[history.length - 1];
+
+  function handlePlay(nextSquares) {
+    // ...history is enumerate all the items in history
+    setHistory([...history, nextSquares]);
+    setXIsNext(!xIsNext);
+  }
+
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+      </div>
+      <div className="game-info">
+        <ol>{/*TODO*/}</ol>
+      </div>
+    </div>
+  )
 }
 
 function calculateWinner(squares) {
